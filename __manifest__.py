@@ -8,9 +8,11 @@
     "license": "LGPL-3",
     "author": "Omprakash Yadav",
     "website": "https://github.com/omprakashkyadav/",
-    "depends": ['base'],
+    "depends": ['base', 'mail'],
     "data": [
-
+        'security/ir.model.access.csv',
+        'views/hospital_views.xml',
+        'data/sequence.xml',
     ],
     "images": [],
     "application": False,
