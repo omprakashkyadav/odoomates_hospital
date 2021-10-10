@@ -1,6 +1,7 @@
 # _*_ Coding: utf-8 _*_
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HospitalPatient(models.Model):
@@ -8,6 +9,12 @@ class HospitalPatient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Patient Record'
     _rec_name = 'patient_name'
+
+    @api.constrains('patient_age')
+    def check_age(self):
+        for rec in self:
+            if rec.patient_age <= 5:
+                raise ValidationError(_('The Ae must be greater than 5 year'))
 
     @api.depends('patient_age')
     def set_age_group(self):
