@@ -1,3 +1,4 @@
 # _*_ Coding: utf-8 _*_
 
-from . import hospital
+from . import patient
+from . import appointment

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- ======== Hospital Appointment Tree View ============= -->
+        <record id="hospital_appointment_tree_view" model="ir.ui.view">
+            <field name="name">hospital.appointment.tree.view</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <tree string="Appointments">
+                    <field name="name"/>
+                    <field name="patient_id"/>
+                    <field name="patient_age"/>
+                    <field name="notes"/>
+                    <field name="appointment_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ====== Hospital Appointment Form View =========== -->
+        <record id="hospital_appointment_form_view" model="ir.ui.view">
+            <field name="name">hospital.appointment.form.view</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <form string="Appointments">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient_id"/>
+                                <field name="patient_age"/>
+                            </group>
+                            <group>
+                                <field name="appointment_date"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="notes"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hospital_appointment" model="ir.actions.act_window">
+            <field name="name">Appointments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.appointment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="hospital_appointment_root"
+                  name="Appointments"
+                  parent="hospital_patient_root"
+                  action="action_hospital_appointment"
+                  sequence="2"/>
+    </data>
+</odoo>
