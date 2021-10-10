@@ -16,9 +16,15 @@ class HospitalAppointment(models.Model):
         result = super(HospitalAppointment, self).create(vals)
         return result
 
+    def _get_default_note(self):
+        return "Hi! You can write note here"
+
+    def _get_default_patient(self):
+        return 1
+
     name = fields.Char(string='Appointment ID', required=True, copy=False, readonly=True, index=True,
                        default=lambda self: _('New'))
-    patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
+    patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, default=_get_default_patient)
     patient_age = fields.Integer(string='Age', related='patient_id.patient_age')
-    notes = fields.Text(string='Registration Note')
+    notes = fields.Text(string='Registration Note', default=_get_default_note)
     appointment_date = fields.Date(string='Date', required=True)
