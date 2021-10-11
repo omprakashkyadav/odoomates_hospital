@@ -25,6 +25,21 @@ class HospitalPatient(models.Model):
                 else:
                     rec.age_group = 'major'
 
+    def action_patient_appointment(self):
+        return {
+            'name': _('Appointments'),
+            'domain': [('patient_id','=',self.id)],
+            'view_type': 'form',
+            'res_model': 'hospital.appointment',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window',
+        }
+
+    def _get_appointment_count(self):
+        count = self.env['hospital.appointment'].search_count([('patient_id','=',self.id)])
+        self.appointment_count = count
+
     name = fields.Char(string="Test")
     name_seq = fields.Char(string="Patient ID", required=True, copy=False, readonly=True, index=True,
                            default=lambda self: _('New'))
@@ -34,6 +49,7 @@ class HospitalPatient(models.Model):
     patient_age = fields.Integer(string="Age", track_visibility="always")
     notes = fields.Text(string="Registration Note")
     image = fields.Binary(string="Image", attachment=True)
+    appointment_count = fields.Integer(string='Appointment', compute='_get_appointment_count')
 
     @api.model
     def create(self, vals):
