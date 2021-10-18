@@ -14,6 +14,8 @@
         'data/sequence.xml',
         'views/patient.xml',
         'views/appointment.xml',
+        'reports/reports.xml',
+        'reports/patient_card.xml',
     ],
     "images": [],
     "application": False,
