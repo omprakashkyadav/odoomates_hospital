@@ -4,6 +4,7 @@
             string="Patient Card"
             model="hospital.patient"
             report_type="qweb-pdf"
+            menu="False"
             name="odoomates_hospital.report_patient"
             file="odoomates_hospital.report_patient"/>
 
