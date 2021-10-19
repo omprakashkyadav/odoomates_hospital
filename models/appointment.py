@@ -30,6 +30,8 @@ class HospitalAppointment(models.Model):
     appointment_date = fields.Date(string='Date', required=True)
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirm'), ('done', 'Done'), ('cancel', 'Cancelled')],
                              string='Status', readonly=True, default='draft')
+    doctor_note = fields.Text(string="Note")
+    pharmacy_note = fields.Text(string="Note")
 
     def action_confirm(self):
         for rec in self:
