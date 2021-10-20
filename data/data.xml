@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="patient_xyz" model="hospital.patient">
+            <field name="name">XYZ</field>
+            <field name="patient_name">XYZ</field>
+            <field name="patient_age">55</field>
+            <field name="gender">female</field>
+            <field name="age_group">minor</field>
+            <field name="notes">Patient Notes...</field>
+        </record>
+    </data>
+
+    <record id="appointment_xyz" model="hospital.appointment">
+        <field name="patient_id" ref="patient_xyz"/>
+        <field name="notes">ABGDEEE</field>
+    </record>
+</odoo>

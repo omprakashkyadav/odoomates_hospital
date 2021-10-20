@@ -11,6 +11,7 @@
     "depends": ['base', 'mail'],
     "data": [
         'security/ir.model.access.csv',
+        'data/data.xml',
         'data/sequence.xml',
         'views/patient.xml',
         'views/appointment.xml',
