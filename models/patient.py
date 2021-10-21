@@ -50,6 +50,7 @@ class HospitalPatient(models.Model):
     notes = fields.Text(string="Registration Note")
     image = fields.Binary(string="Image", attachment=True)
     appointment_count = fields.Integer(string='Appointment', compute='_get_appointment_count')
+    active = fields.Boolean(string='Active', default=True)
 
     @api.model
     def create(self, vals):
