@@ -51,6 +51,7 @@ class HospitalPatient(models.Model):
     image = fields.Binary(string="Image", attachment=True)
     appointment_count = fields.Integer(string='Appointment', compute='_get_appointment_count')
     active = fields.Boolean(string='Active', default=True)
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
 
     @api.model
     def create(self, vals):

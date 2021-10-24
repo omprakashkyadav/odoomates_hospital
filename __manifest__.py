@@ -11,10 +11,12 @@
     "depends": ['base', 'mail'],
     "data": [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'data/data.xml',
         'data/sequence.xml',
         'views/patient.xml',
         'views/appointment.xml',
+        'views/doctor.xml',
         'reports/reports.xml',
         'reports/patient_card.xml',
     ],
