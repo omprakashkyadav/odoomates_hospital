@@ -32,6 +32,7 @@ class HospitalAppointment(models.Model):
                              string='Status', readonly=True, default='draft')
     doctor_note = fields.Text(string="Note")
     pharmacy_note = fields.Text(string="Note")
+    appointment_lines = fields.One2many('hospital.appointment.line', 'appointment_id', string='Appointment Lines')
 
     def action_confirm(self):
         for rec in self:
@@ -41,3 +42,11 @@ class HospitalAppointment(models.Model):
         for rec in self:
             rec.state = 'done'
 
+
+class HospitalAppointmentLine(models.Model):
+    _name = 'hospital.appointment.line'
+    _description = 'Appointment Lines'
+
+    product_id = fields.Many2one('product.product', string='Medicine')
+    product_qty = fields.Integer(string='Quantity')
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment ID')

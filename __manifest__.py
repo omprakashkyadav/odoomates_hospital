@@ -8,7 +8,7 @@
     "license": "LGPL-3",
     "author": "Omprakash Yadav",
     "website": "https://github.com/omprakashkyadav/",
-    "depends": ['base', 'mail'],
+    "depends": ['base', 'mail', 'sale'],
     "data": [
         'security/ir.model.access.csv',
         'security/security.xml',
