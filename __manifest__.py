@@ -19,6 +19,7 @@
         'views/doctor.xml',
         'reports/reports.xml',
         'reports/patient_card.xml',
+        'wizard/create_appointment.xml',
     ],
     "images": [],
     "application": False,
