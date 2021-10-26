@@ -14,4 +14,9 @@ class CreateAppointment(models.TransientModel):
         """
         Method for create New Appointment
         """
-        pass
+        vals = {
+            'patient_id': self.patient_id.id,
+            'appointment_date': self.appointment_date,
+            'notes': 'Patient Created by the Wizard'
+        }
+        self.env['hospital.appointment'].create(vals)
