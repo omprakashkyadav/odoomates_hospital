@@ -12,14 +12,16 @@
     "data": [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'data/mail_template.xml',
         'data/data.xml',
         'data/sequence.xml',
-        'views/patient.xml',
+        'wizard/create_appointment.xml',
         'views/appointment.xml',
+        'views/patient.xml',
         'views/doctor.xml',
         'reports/reports.xml',
         'reports/patient_card.xml',
-        'wizard/create_appointment.xml',
+        'menu/menu.xml'
     ],
     "images": [],
     "application": False,
