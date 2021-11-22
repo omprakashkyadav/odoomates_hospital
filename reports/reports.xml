@@ -8,4 +8,11 @@
             name="odoomates_hospital.report_patient"
             file="odoomates_hospital.report_patient"/>
 
+    <report id="report_patient_card_xlx"
+            string="Patient Card Excel"
+            model="hospital.patient"
+            report_type="xlsx"
+            name="odoomates_hospital.report_patient_xls"
+            file="odoomates_hospital.report_patient_xls"/>
+
 </odoo>
