@@ -35,7 +35,7 @@ class HospitalPatient(models.Model):
     def action_patient_appointment(self):
         return {
             'name': _('Appointments'),
-            'domain': [('patient_id','=',self.id)],
+            'domain': [('patient_id', '=', self.id)],
             'view_type': 'form',
             'res_model': 'hospital.appointment',
             'view_id': False,
@@ -44,7 +44,7 @@ class HospitalPatient(models.Model):
         }
 
     def _get_appointment_count(self):
-        count = self.env['hospital.appointment'].search_count([('patient_id','=',self.id)])
+        count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
         self.appointment_count = count
 
     name = fields.Char(string="Test")
@@ -61,6 +61,7 @@ class HospitalPatient(models.Model):
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
     doctor_gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Doctor Gender')
     patient_pro = fields.Many2one('res.users', string='PRO')
+    user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.user)
     email = fields.Char(string='Email')
 
     @api.onchange('doctor_id')
@@ -68,6 +69,11 @@ class HospitalPatient(models.Model):
         for rec in self:
             if rec.doctor_id:
                 rec.doctor_gender = rec.doctor_id.gender
+
+    def action_send_card(self):
+        template_id = self.env.ref('odoomates_hospital.mail_template_patient_card').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
 
     @api.model
     def create(self, vals):
