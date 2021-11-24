@@ -16,6 +16,13 @@ class HospitalAppointment(models.Model):
         result = super(HospitalAppointment, self).create(vals)
         return result
 
+    @api.multi
+    def write(self, vals):
+        res = super(HospitalAppointment, self).write(vals)
+        print("Test Write Function..")
+        # Do As Per The Need
+        return res
+
     def _get_default_note(self):
         return "Hi! You can write note here"
 
